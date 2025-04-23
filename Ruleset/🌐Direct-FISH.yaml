@@ -6,9 +6,9 @@ payload:
   - IP-CIDR,192.168.100.0/24
   - DST-PORT,20228-20229
   - DOMAIN-SUFFIX,qichiyu.com
-  - liuzixin.xyz
-  - is.liuzixin.xyz
-  - nas.liuzixin.xyz
+  - DOMAIN-SUFFIX,liuzixin.xyz
+  - DOMAIN-SUFFIX,is.liuzixin.xyz
+  - DOMAIN-SUFFIX,nas.liuzixin.xyz
   
   #################### 杂项
   # CN域名
