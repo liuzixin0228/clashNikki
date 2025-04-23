@@ -1,6 +1,15 @@
 payload:
   ### 🌐Direct-FISH，此列表被引用到Fakeip-filter，兼具返回真实IP的功能
 
+  #################### 自定义
+  # 自定义
+  - IP-CIDR,192.168.100.0/24
+  - DST-PORT,20228-20229
+  - DOMAIN-SUFFIX,qichiyu.com
+  - liuzixin.xyz
+  - is.liuzixin.xyz
+  - nas.liuzixin.xyz
+  
   #################### 杂项
   # CN域名
   - DOMAIN-SUFFIX,api.ipify.org # ip查询
