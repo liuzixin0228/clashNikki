@@ -285,34 +285,34 @@ proxy-groups:
   - name: Ⓜ️微软Copilot
     type: select
     <<: *default-proxy
-    icon: https://ghfast.top/https://github.com/refined-fish/clash_rule_fish/blob/main/Icons/Microsoft_365_Copilot.png
+    icon: https://ghfast.top/https://github.com/liuzixin0228/clashNikki/blob/main/Icons/Microsoft_365_Copilot.png
 
   - name: ⏣OpenAi
     type: select
     <<: *default-proxy
-    icon: https://ghfast.top/https://github.com/refined-fish/clash_rule_fish/blob/main/Icons/Chat_GPT.png
+    icon: https://ghfast.top/https://github.com/liuzixin0228/clashNikki/blob/main/Icons/Chat_GPT.png
 
   - name: ✈️Telegram
     type: select
     <<: *default-proxy
-    icon: https://ghfast.top/https://github.com/refined-fish/clash_rule_fish/blob/main/Icons/Telegram.png
+    icon: https://ghfast.top/https://github.com/liuzixin0228/clashNikki/blob/main/Icons/Telegram.png
 
   - name: 🧱GFW
     type: select
     <<: *default-proxy
-    icon: https://ghfast.top/https://github.com/refined-fish/clash_rule_fish/blob/main/Icons/GFW.png
+    icon: https://ghfast.top/https://github.com/liuzixin0228/clashNikki/blob/main/Icons/GFW.png
 
   - name: 📺巴哈姆特
     type: select
     proxies:
       - 🇭🇰香港节点
       - 🇨🇳台湾节点
-    icon: https://ghfast.top/https://github.com/refined-fish/clash_rule_fish/blob/main/Icons/巴哈姆特.png
+    icon: https://ghfast.top/https://github.com/liuzixin0228/clashNikki/blob/main/Icons/巴哈姆特.png
 
   - name: 🎮Steam
     type: select
     <<: *default-direct
-    icon: https://ghfast.top/https://github.com/refined-fish/clash_rule_fish/blob/main/Icons/Steam.png
+    icon: https://ghfast.top/https://github.com/liuzixin0228/clashNikki/blob/main/Icons/Steam.png
 
   ##################################
   - name: 🇭🇰香港节点
@@ -349,17 +349,17 @@ rule-providers-general: &rule-providers-general
 rule-providers:
   ♻️延迟最低-FISH:
     <<: *rule-providers-general
-    url: https://raw.githubusercontent.com/refined-fish/clash_rule_fish/refs/heads/main/Ruleset/♻️延迟最低-FISH.yaml
+    url: https://raw.githubusercontent.com/liuzixin0228/clashNikki/refs/heads/main/Ruleset/♻️延迟最低-FISH.yaml
     path: ./providers/rule/rule-provider_♻️延迟最低-FISH.yaml
 
   🌐Direct-FISH:
     <<: *rule-providers-general
-    url: https://raw.githubusercontent.com/refined-fish/clash_rule_fish/refs/heads/main/Ruleset/🌐Direct-FISH.yaml
+    url: https://raw.githubusercontent.com/liuzixin0228/clashNikki/refs/heads/main/Ruleset/🌐Direct-FISH.yaml
     path: ./providers/rule/rule-provider_🌐Direct-FISH.yaml
 
   Ⓜ️微软Copilot-FISH:
     <<: *rule-providers-general
-    url: https://raw.githubusercontent.com/refined-fish/clash_rule_fish/refs/heads/main/Ruleset/Ⓜ️微软Copilot-FISH.yaml
+    url: https://raw.githubusercontent.com/liuzixin0228/clashNikki/refs/heads/main/Ruleset/Ⓜ️微软Copilot-FISH.yaml
     path: ./providers/rule/rule-provider_Ⓜ️微软Copilot-FISH.yaml
 
 ## 路由规则设置---------------------------------------------------------------------------------------------------
