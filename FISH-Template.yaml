@@ -1,17 +1,17 @@
 ## 带🔴标记的配置项为一般代理软件强制覆写的项目，需要在代理软件配置相应项目
 
 ## 入站端口配置 ---------------------------------------------------------------------------------------------------
-mixed-port: 7890 # HTTP+Socks4混合，Win下的系统代理端口
-socks-port: 1080 # Socks5，代理端口
-port: 8080 # HTTP，代理端口
-#redir-port: 7891  #🔴非linux系统无效，redir 透明代理端口
-#tproxy-port: 7892  #🔴非linux系统无效，tproxy 透明代理端口
+mixed-port: 7893 # HTTP+Socks4混合，Win下的系统代理端口
+socks-port: 7891 # Socks5，代理端口
+port: 7890 # HTTP，代理端口
+redir-port: 7892  #🔴非linux系统无效，redir 透明代理端口
+tproxy-port: 7894  #🔴非linux系统无效，tproxy 透明代理端口
 
 ## 全局配置 ------------------------------------------------------------------------------------------------
 mode: rule # rule（规则）/ global（全局）/ direct（直连）
 allow-lan: true # 允许局域网连接
 bind-address: "*" #🔴监听的本地网卡地址，*为全部
-log-level: warning # 日志级别
+log-level: error # 日志级别
 ipv6: true # 是否接受ipv6流量
 tcp-concurrent: true # TCP并发
 profile: # 缓存设置
@@ -28,7 +28,7 @@ profile: # 缓存设置
 #- ~
 #skip-auth-prefixes: # 白名单，允许跳过用户验证的IP
 #- ~
-#unified-delay: false # 统一延迟计算，没啥卵用，就是界面好看，会对延迟自动选择策略造成影响
+unified-delay: true # 统一延迟计算，没啥卵用，就是界面好看，会对延迟自动选择策略造成影响
 #routing-mark: 6666  # 非linux无效，路由标记，为流量提供标记以供其他应用进行流量处理
 
 ## TCP-KeepA-live配置 ------------------------------------------------------------------------------------------
@@ -38,7 +38,7 @@ disable-keep-alive: false # 禁用 keep alive，即允许长链接一直存在
 
 ## API面板设置---------------------------------------------------------------------------------------------------
 external-controller: 0.0.0.0:9090 #🔴API面板监听地址
-secret: "hd54RIm0LiUpyu" #🔴API面板访问密钥
+secret: "qqq1314520." #🔴API面板访问密钥
 external-ui: ./ui #🔴API面板静态资源路径
 external-ui-name: zashboard # API面板名，配合路径拼接成路径，例如/ui/metacubexd
 external-ui-url: "https://ghfast.top/https://github.com/Zephyruso/zashboard/releases/latest/download/dist.zip" # API面板下载地址
@@ -87,7 +87,7 @@ dns:
   use-system-hosts: true # 查询系统的 hosts
   #respect-rules: false # DNS请求遵循路由规则，需先配置好 proxy-server-nameserver，否则出现鸡蛋问题
   # fakeip配置段
-  fake-ip-range: 198.18.0.1/16 #🔴fakeip 的 IP 段，tun接口的默认 IPV4 地址 也使用此值作为参考
+  fake-ip-range: 28.0.0.1/8 #🔴fakeip 的 IP 段，tun接口的默认 IPV4 地址 也使用此值作为参考
   fake-ip-filter-mode: blacklist # 黑/白名单模式，黑名单下，filter内容将使用redir-host模式解析
   fake-ip-filter: # fakeip过滤，以下域名将使用redir-host模式，填入无需代理的内容
     - "rule-set:🌐Direct-FISH" # 个人收集直连域名，不能直接用GEOSITE引用的零散域名
@@ -152,7 +152,7 @@ sniffer: # 嗅探，获取SNI中的域名，使mihomo能够反解未经自己DNS
 tun:
   enable: true #🔴启用Tun接口
   stack: mixed # TUN 堆栈模式,建议 mixed（TCP：system，UDP：Gvisor）
-  device: utun0 #🔴TUN 网卡名，MacOS 只能 utun 开头
+  # device: utun0 #🔴TUN 网卡名，MacOS 只能 utun 开头
   auto-route: true # 自动设置全局路由，自动将全局流量路由进 tun
   auto-detect-interface: true # 自动选择流量的出接口（默认wan口）
   dns-hijack: # dns 劫持，将匹配到的连接导入内部 dns 模块，不书写协议则默认 udp://
@@ -175,7 +175,7 @@ tun:
     - com.MobileTicket # 铁路12306
     - com.chinamworld.main # 中国建设银行
     - com.jd.jrapp # 京东金融
-  #auto-redirect: true # 仅Linux有效，自动配置 iptables/nftables 以重定向 TCP 连接，需要auto-route: true
+  auto-redirect: true # 仅Linux有效，自动配置 iptables/nftables 以重定向 TCP 连接，需要auto-route: true
   #strict-route: false # 严格路由，添加防火墙规则禁止Windows使用多DNS，有效防止DNS泄露，实测严重拖慢Windows访问速度
   #endpoint-independent-nat: false # 独立于端点的 NAT，性能可能下降，不建议不需要时开启
 
@@ -197,7 +197,9 @@ proxy-providers-general: &proxy-providers-general # 代理提供者通用配置
     ip-version: dual # 可选dual/ipv4/ipv6/ipv4-prefer/ipv6-prefer，即优先v4或v6，仅v4或v6
 
 proxy-providers:
-  #❗provider占位1
+  provider1:
+    <<: *proxy-providers-general  # 引用上文的yaml锚点
+    url: "订阅连接"
   #❗provider占位2
   #❗provider占位3
   #❗provider占位4
@@ -205,7 +207,7 @@ proxy-providers:
 ## 代理组设置---------------------------------------------------------------------------------------------------
 use-all-proxy-providers: &use-all-proxy-providers # 代理组通用配置
   use:
-    #❗use-provider占位1
+    - provider1
     #❗use-provider占位2
     #❗use-provider占位3
     #❗use-provider占位4
@@ -213,8 +215,8 @@ use-all-proxy-providers: &use-all-proxy-providers # 代理组通用配置
 health-check-general: &health-check-general # 代理组健康检查通用配置
   <<: *use-all-proxy-providers
   url: http://www.gstatic.com/generate_204
-  interval: 30 # 健康检查间隔
-  tolerance: 200 # 延迟容忍度，单位ms
+  interval: 300 # 健康检查间隔
+  # tolerance: 200 # 延迟容忍度，单位ms
   lazy: true # 未选中当前组时不进行测试
   timeout: 5000 # 健康检查超时，单位ms
   max-failed-times: 5 # 失败次数，超过则执行一次强制健康检查
@@ -263,13 +265,13 @@ proxy-groups:
   - name: ✅默认代理
     type: select
     proxies:
+      - 🇯🇵日本节点
       - ♻️延迟最低
       - ⚠️故障切换
       - 🖐️手动切换
       - 🇭🇰香港节点
       - 🇨🇳台湾节点
       - 🇸🇬狮城节点
-      - 🇯🇵日本节点
       - 🇺🇲美国节点
       - DIRECT
 
@@ -305,6 +307,7 @@ proxy-groups:
   - name: 📺巴哈姆特
     type: select
     proxies:
+      - 🇯🇵日本节点
       - 🇭🇰香港节点
       - 🇨🇳台湾节点
     icon: https://ghfast.top/https://github.com/liuzixin0228/clashNikki/blob/main/Icons/巴哈姆特.png
