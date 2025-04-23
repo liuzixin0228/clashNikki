@@ -1,3 +1,4 @@
+此项目引用自https://github.com/refined-fish/clash_rule_fish   仅为个人提供个性化使用
 # Clash_Rule_FISH 简介
 
 这是一个 **`mihomo`** 的 **`配置文件`** + **`Ruleset`** 仓库，但 **个人色彩** 比较重，更推荐作为参考而不是直接引用。
